@@ -1,0 +1,235 @@
+WindowManager:
+    FirstWindow:                                                    # Первое окно
+    SecondWindow:                                                   # Второе окно
+	ThirdWindow:                                                    # Третье окно
+
+
+<FirstWindow>:
+    name: "first"                                                   # id окна
+	BoxLayout:
+        orientation: "vertical"                                     # Вертикальная ориентация
+		padding: 50                                                 # Отступ от края
+		spacing: 20                                                 # Отступ между объектами
+		Image:                                                      # Эксклюзивный стикер
+			pos_hint: {'center_x':0.5, 'top':1}
+			source: 'welcome_sticker.png'
+			size_hint: (0.6, 0.6)                                   # Размер виджета
+		Label:                                                      # Приветственная фраза
+			text: "		Привет, я - Ди\nТвой мини-помощник"
+			font_size: 20                                           # Размер текста
+			font_name: 'shrift.ttf'                                 # Шрифт Courier New
+			pos_hint: {'center_x':0.5, 'top': 1}                    # Расположение на экране
+	BoxLayout:
+		padding: 10                                                 # Отступ от края
+		spacing: 20                                                 # Отступ между объектами
+		RoundedButton:                                              # Кастомная кнопка
+			pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+			text: "Транспорт"
+			font_size: 20
+			on_release: 
+				root.manager.transition.direction = "right"         # Направление переключения экрана
+				root.manager.transition.duration = 1                # Время переключения между экранами
+				app.root.current = "second"                         # Изменение экрана по ID экрана
+		RoundedButton:
+			pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+			text: "Сайты"
+			font_size: 20                                           # Размер текста
+			on_release: 
+				root.manager.transition.direction = "left"          # Направление переключения экрана
+				root.manager.transition.duration = 1                # Время переключения между экранами
+				app.root.current = "third"                          # Изменение экрана по ID экрана
+	
+<SecondWindow>:
+	name: "second"                                                  # id окна
+	BoxLayout:
+        orientation: "vertical"                                     # Вертикальная ориентация
+		BoxLayout:
+            Label:
+                bold: True                                          # Жирный текст
+                font_name: 'shrift.ttf'                             # Шрифт Courier New
+                font_size: 30                                       # Размер текста
+                text: "Транспорт"
+                pos_hint: {'center_x':0.5, 'center_y': 0.5}         # Расположение на экране
+                size_hint: (0.1, 0.1)                               # Размер виджета
+        BoxLayout:                                                  # Информационное окно состоящее ...
+            orientation: "vertical"                                 # ... из большого числа  Label с ...
+            BoxLayout:                                              # ... обговоренными точками (остановками) ...
+                Label:                                              # ... и номерами транспорта
+                    font_name: 'shrift.ttf'
+                    font_size: 15
+                    text: "Голубая бухта - Омега, Юмашева\n(И в обратную сторону):"
+                    color: '#FFBD88'
+                    pos_hint: {'x': 1,'y': 1}
+                    size_hint: (0.1, 0.01)
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 20
+                    text: "77, 105"
+                    size_hint: (0.028, 0.01)
+                    pos_hint: {'left': 1,'top': 1}
+            BoxLayout:
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 15
+                    text: "Голубая бухта - Нахимова\n(Нахимова - Голубая бухта):"
+                    color: '#FFBD88'
+                    pos_hint: {'x': 1,'y': 1}
+                    size_hint: (0.1, 0.01)
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 20
+                    text: "77"
+                    size_hint: (0.048, 0.01)
+                    pos_hint: {'left': 1,'top': 1}
+            BoxLayout:
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 15
+                    text: "Юмашева - Омега\n(Омега - Юмашева):"
+                    color: '#FFBD88'
+                    pos_hint: {'x': 1,'y': 1}
+                    size_hint: (0.1, 0.01)
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 15
+                    text: "             Едет всё\n           (Кроме 30)"
+                    size_hint: (0.1, 0.01)
+                    pos_hint: {'left': 1,'top': 1}
+            BoxLayout:
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 15
+                    text: "Омега, Юмашева - Доброцен\n(И в обратную сторону):"
+                    color: '#FFBD88'
+                    pos_hint: {'x': 1,'y': 1}
+                    size_hint: (0.1, 0.01)
+                Label:
+                    font_name: 'shrift.ttf'
+                    font_size: 20
+                    text: "14, 19"
+                    size_hint: (0.048, 0.01)
+                    pos_hint: {'left': 1,'top': 1}
+        BoxLayout:
+	BoxLayout:
+		padding: 10
+		spacing: 20
+		RoundedButton:
+			pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+			text: "Главный экран"
+			font_size: 20
+			on_release: 
+				root.manager.transition.direction = "up"            # Направление переключения экрана
+				root.manager.transition.duration = 1                # Время переключения между экранами
+				app.root.current = "first"                          # Изменение экрана по ID экрана
+		RoundedButton:
+			pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+			text: "Сайты"
+			font_size: 20
+			on_release: 
+				root.manager.transition.direction = "left"          # Направление переключения экрана
+				root.manager.transition.duration = 1                # Время переключения между экранами
+				app.root.current = "third"                          # Изменение экрана по ID экрана
+			
+<ThirdWindow>:
+    name: "third"                                                   # id окна
+	BoxLayout:
+        orientation: "vertical"                                     # Вертикальная ориентация
+		padding: 50                                                 # Отступ от края
+		spacing: 20                                                 # Отступ между объектами
+		BoxLayout:
+            Label:
+                bold: True                                          # Жирный текст
+                font_name: 'shrift.ttf'                             # Шрифт Courier New
+                font_size: 30                                       # Размер текст
+                text: "Сайты"
+                pos_hint: {'center_x':0.5, 'top': 1}                # Расположение на экране
+                size_hint: (0.1, 0.1)                               # Размер виджета
+		BoxLayout:
+		    spacing: 5                                              # Отступ между объектами
+		    orientation: "vertical"                                 # Вертикальная ориентация
+		    Label:
+		        markup: True                                        # Разметка
+                bold: True                                          # Жирный текст
+                underline: True                                     # Подчеркнутый текст
+		        size_hint: (0.1, 0.001)                             # Размер виджета
+		        color: '#FFBD88'                                    # Цвет текста
+                font_name: 'shrift2.ttf'                            # Шрифт Clear Sans Bold
+                font_size: 18                                       # Размер текста
+                pos_hint: {'center_x':0.5, 'center_y': 1}           # Расположение на экране
+                text: "[ref=https://do.sevsu.ru/my/]DO.SEVSU.RU[/ref]"      # Гиперссылка
+                on_ref_press:
+                    import webbrowser                               # Импортирование библиотеки из Python
+                    webbrowser.open('https://do.sevsu.ru/my/')      # Переход по ссылке в браузере
+            Label:
+		        markup: True                                        # Разметка
+                bold: True                                          # Жирный текст
+                underline: True                                     # Подчеркнутый текст
+		        size_hint: (0.1, 0.001)
+		        color: '#FFBD88'                                    # Цвет текста
+                font_name: 'shrift2.ttf'
+                font_size: 18
+                pos_hint: {'center_x':0.5, 'center_y': 1}
+                text: "[ref=https://lord-filmihd.lordfilm2.band/5788-1126v-serial-velikaja-2-sezon.html]Сериал - Великая[/ref]"
+                on_ref_press:
+                    import webbrowser
+                    webbrowser.open('https://lord-filmihd.lordfilm2.band/5788-1126v-serial-velikaja-2-sezon.html')
+            Label:
+                markup: True
+                bold: True
+                underline: True
+		        size_hint: (0.1, 0.001)
+		        color: '#FFBD88'
+                font_name: 'shrift2.ttf'
+                font_size: 18
+                pos_hint: {'center_x':0.5, 'center_y': 1}
+                text: "[ref=https://www.pinterest.ru/#]PINTEREST[/ref]"
+                on_ref_press:
+                    import webbrowser
+                    webbrowser.open('https://www.pinterest.ru/#')
+            Label:
+                markup: True
+                bold: True
+                size_hint: (0.1, 0.001)
+                font_name: 'shrift2.ttf'
+                font_size: 15
+                pos_hint: {'center_x':0.5, 'center_y': 1}
+                text: "[ref=https://vk.com/ka1deo]\nIF YOU NEED HELP TAP HERE[/ref]"
+                on_ref_press:
+                    import webbrowser
+                    webbrowser.open('https://vk.com/ka1deo')
+        BoxLayout:
+        BoxLayout:
+        BoxLayout:
+	BoxLayout:
+		padding: 10
+		spacing: 20
+		RoundedButton:
+			pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+			text: "Транспорт"
+			font_size: 20
+			on_release: 
+				root.manager.transition.direction = "right"         # Направление переключения экрана
+				root.manager.transition.duration = 1                # Время переключения между экранами
+				app.root.current = "second"                         # Изменение экрана по ID экрана
+		RoundedButton:
+			pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+			text: "Главный экран"
+			font_size: 20
+			on_release: 
+				root.manager.transition.direction = "up"            # Направление переключения экрана
+				root.manager.transition.duration = 1                # Время переключения между экранами
+				app.root.current = "first"                          # Изменение экрана по ID экрана
+
+
+                                                                    # Круглая синяя кнопка
+<RoundedButton@Button>
+	size_hint: (0.5, 0.1)                                           # Размер кнопки
+	background_color: (0,0,0,0)
+	background_normal: ''
+	canvas.before:
+		Color:
+			rgba: (48/255, 85/255, 150/255, 1)                      # Цвет кнопки
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+			radius: [20]                                            # Радиус скругления краёв
