@@ -6,7 +6,6 @@ from kivy.core.window import Window
 
 Window.clearcolor = [65/255, 154/255, 255/255, 1]
 Window.title = "MyDi"
-Window.size = (400, 600)
 
 
 class FirstWindow(Screen):
